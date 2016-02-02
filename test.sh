@@ -2,6 +2,12 @@
 
 path_to_local_config=$1
 
+# check if env var with config exists
+if [ -z "$BITMEDIA_TEST_SETTINGS" ]; then
+    echo "Need to set BITMEDIA_TEST_SETTINGS"
+    exit 1
+fi 
+
 # pull if not exist
 if [[ "$(docker images -q matveyco/bitmedia-admin:dev)" == "" ]]; then
   # do something
